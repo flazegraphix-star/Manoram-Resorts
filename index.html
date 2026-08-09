@@ -100,7 +100,7 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; color:var(--ivory); lett
   font-weight:600;
   transition:transform .4s var(--ease), box-shadow .4s var(--ease), background .4s var(--ease);
 }
-.mr-btn svg{ width:17px; height:17px; }
+.mr-btn svg{ width:17px; height:17px; stroke:currentColor; flex-shrink:0; }
 .mr-btn-solid{
   background:linear-gradient(135deg, var(--gold-2), var(--gold));
   color:#2C2A26;
@@ -1085,6 +1085,7 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; color:var(--ivory); lett
     <div class="mr-card mr-glass mr-reveal d1"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.3"><path d="M4 21c2-6 6-9 8-9s6 3 8 9"/><circle cx="12" cy="7" r="3"/></svg><h4>Family Functions</h4><p>Warm, welcoming spaces built for togetherness.</p></div>
     <div class="mr-card mr-glass mr-reveal d2"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.3"><path d="M3 21V10l9-6 9 6v11"/><path d="M9 21v-7h6v7"/></svg><h4>Business Events</h4><p>Reliable infrastructure for conferences and launches.</p></div>
     <div class="mr-card mr-glass mr-reveal d3"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg><h4>Premium Banquets</h4><p>Grand halls designed to comfortably host large groups.</p></div>
+    <div class="mr-card mr-glass mr-reveal d4"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.3"><path d="M2 17c1.5-1.3 3-1.3 4.5 0s3 1.3 4.5 0 3-1.3 4.5 0 3 1.3 4.5 0M2 21c1.5-1.3 3-1.3 4.5 0s3 1.3 4.5 0 3-1.3 4.5 0 3 1.3 4.5 0M6 13V6a2 2 0 012-2h8a2 2 0 012 2v7"/></svg><h4>Pool Party</h4><p>Resort-style poolside gatherings with music and open-air ambience.</p></div>
   </div>
 </section>
 
@@ -1110,6 +1111,9 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; color:var(--ivory); lett
     <div class="mr-amenity"><div class="mr-amenity-ph"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21 8 13.5 2.5 9h7z"/></svg><span>Premium Experience</span></div>
     <div class="mr-amenity"><div class="mr-amenity-ph"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><circle cx="8" cy="14" r="3"/><circle cx="16" cy="10" r="2"/><path d="M8 17v3M16 12v5M4 20h16"/></svg><span>Kids Play Area</span></div>
     <div class="mr-amenity"><div class="mr-amenity-ph"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 2c2 3 1 4.5-.5 6C10 9.5 9 11 9 13a3 3 0 006 0c0-1-.5-2-1.5-3 1.5 1 2.5 2.5 2.5 4.5a5 5 0 01-10 0c0-3.5 2.5-6 4-8.5C10.5 4.5 11 3 12 2z"/></svg><span>Bonfire Zone</span></div>
+    <div class="mr-amenity"><div class="mr-amenity-ph"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 2l7 3v6c0 5-3 8-7 11-4-3-7-6-7-11V5z"/><circle cx="12" cy="11" r="2.5"/></svg><span>CCTV Security</span></div>
+    <div class="mr-amenity"><div class="mr-amenity-ph"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M5 12.5a11 11 0 0114 0M8 16a6.5 6.5 0 018 0"/><circle cx="12" cy="19.5" r="1"/></svg><span>Free Wi-Fi</span></div>
+    <div class="mr-amenity"><div class="mr-amenity-ph"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/><path d="M12 4v1M8.5 5.5l.7.7M15.5 5.5l-.7.7"/></svg><span>Concierge Service</span></div>
   </div>
 </section>
 
@@ -2313,4 +2317,3 @@ function markEnquirySubmitted(){
 </script>
 </body>
 </html>
-
