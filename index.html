@@ -188,53 +188,49 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; color:var(--ivory); lett
 .mr-mobile-close{ position:absolute; top:26px; right:26px; font-size:1.6rem; color:var(--gold-2); }
 
 /* ============ HERO ============ */
+/* Single source of truth for the hero image path — swap this one
+   variable to point at the purpose-built hero photograph. */
+:root{ --hero-img: url('images/hero-main.jpg'); }
 .mr-hero{
   position:relative; min-height:94vh;
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-  text-align:center; padding:130px 6vw 70px; overflow:hidden;
+  display:flex; flex-direction:column; align-items:flex-start; justify-content:center;
+  text-align:left; padding:130px 7vw 70px; overflow:hidden;
   color:var(--ink);
+  background:#0A0D0A; /* safety fallback so a missing/slow hero image never shows the page's ivory background */
 }
-/* Resort photograph, subtle Ken-Burns drift for gentle
-   non-intrusive motion. Sits under a light layered treatment so
-   the image stays clearly visible while every word above it reads
-   cleanly on any device. */
+.mr-hero-eyebrow::after{ display:none; }
+.mr-hero-rule{ margin-left:0; margin-right:auto; }
+/* Resort photograph. No fog, no particles, no heavy vignette — the
+   image itself was composed with a quieter left side, so the only
+   job left for CSS is a soft localized gradient that keeps type
+   readable without dulling the architecture on the right. */
 .mr-hero-photo{
-  position:absolute; inset:-3%; z-index:0;
-  background-image:url('images/hero-drone.jpg');
-  background-size:cover; background-position:center 60%;
-  transform:scale(1.06);
-  animation:mrHeroDrift 26s ease-in-out infinite alternate;
+  position:absolute; inset:0; z-index:0;
+  background-image:var(--hero-img);
+  background-size:cover; background-position:center center;
+  transform:scale(1);
+  animation:mrHeroDrift 34s ease-in-out infinite alternate;
   will-change:transform;
 }
-@keyframes mrHeroDrift{ from{ transform:scale(1.06) translate3d(0,0,0); } to{ transform:scale(1.13) translate3d(0,-1.2%,0); } }
+@keyframes mrHeroDrift{ from{ transform:scale(1); } to{ transform:scale(1.015); } }
 .mr-hero-bg{
+  /* One soft diagonal wash confined to the left ~55%, where the
+     typography sits. The right side of the photograph is left
+     essentially untouched. */
   position:absolute; inset:0; z-index:1;
-  background:
-    linear-gradient(180deg, rgba(6,9,7,.58) 0%, rgba(7,10,8,.22) 34%, rgba(7,10,8,.3) 62%, rgba(6,9,7,.6) 100%);
+  background:linear-gradient(100deg,
+    rgba(5,8,6,.72) 0%,
+    rgba(5,8,6,.5) 26%,
+    rgba(5,8,6,.2) 46%,
+    rgba(5,8,6,0) 62%);
 }
 .mr-hero-vignette{
   position:absolute; inset:0; z-index:1; pointer-events:none;
-  box-shadow:inset 0 0 min(14vw,200px) rgba(0,0,0,.4);
+  box-shadow:inset 0 0 min(6vw,80px) rgba(0,0,0,.14);
 }
-.mr-hero-fog{
-  position:absolute; inset:0; z-index:1; opacity:.32; mix-blend-mode:screen;
-  background:
-    radial-gradient(ellipse at 50% 8%, rgba(210,180,95,.16), transparent 55%);
-  animation:mrFog 12s ease-in-out infinite alternate;
-}
-@keyframes mrFog{ from{ opacity:.2; } to{ opacity:.4; } }
-.mr-hero-particles{ position:absolute; inset:0; z-index:1; overflow:hidden; pointer-events:none; }
-.mr-hero-particles span{
-  position:absolute; bottom:-6%; width:3px; height:3px; border-radius:50%;
-  background:var(--gold-2); opacity:0; box-shadow:0 0 6px 1px rgba(210,180,95,.7);
-  animation:mrHeroParticle linear infinite;
-}
-@keyframes mrHeroParticle{
-  0%{ transform:translateY(0) translateX(0); opacity:0; }
-  10%{ opacity:.75; }
-  90%{ opacity:.4; }
-  100%{ transform:translateY(-112vh) translateX(6vw); opacity:0; }
-}
+.mr-hero-fog{ display:none; }
+.mr-hero-particles{ display:none; }
+.mr-hero-strip{ display:none; }
 .mr-hero-corner{
   position:absolute; width:min(120px,14vw); height:min(120px,14vw); z-index:2; pointer-events:none;
   opacity:.55;
@@ -242,15 +238,12 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; color:var(--ivory); lett
 .mr-hero-corner svg{ width:100%; height:100%; stroke:var(--gold-2); fill:none; stroke-width:1; }
 .mr-hero-corner.tl{ top:24px; left:24px; }
 .mr-hero-corner.br{ bottom:24px; right:24px; transform:rotate(180deg); }
-.mr-hero-blueprint{
-  position:absolute; bottom:-2%; left:50%; transform:translateX(-50%);
-  width:min(1200px,140vw); opacity:.16; z-index:1; pointer-events:none;
-}
-.mr-hero-blueprint line, .mr-hero-blueprint path{ stroke:var(--gold-2); stroke-width:1; fill:none; }
-.mr-hero-blueprint .fine{ stroke-width:.5; opacity:.55; }
-.mr-hero-blueprint .glow{ fill:var(--gold-2); }
+.mr-hero-blueprint{ display:none; }
 
-.mr-hero-content{ position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; }
+.mr-hero-content{
+  position:relative; z-index:2; display:flex; flex-direction:column; align-items:flex-start;
+  width:100%; max-width:520px;
+}
 .mr-hero-logo{
   width:clamp(100px,13vw,158px); margin-bottom:18px;
   filter:drop-shadow(0 0 34px rgba(210,180,95,.55)) drop-shadow(0 2px 10px rgba(0,0,0,.5)) brightness(1.06);
@@ -262,11 +255,11 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; color:var(--ivory); lett
   color:var(--gold-2); font-weight:500;
   opacity:0; animation:mrFadeUp 1s var(--ease) forwards .28s;
 }
-.mr-hero-eyebrow::before, .mr-hero-eyebrow::after{ content:''; width:26px; height:1px; background:var(--gold-2); }
+.mr-hero-eyebrow::before{ content:''; width:26px; height:1px; background:var(--gold-2); }
 .mr-hero h1{
   margin-top:16px;
-  font-size:clamp(2.8rem,8.4vw,6.6rem); line-height:.97; letter-spacing:.01em;
-  color:var(--ink); text-shadow:0 6px 40px rgba(0,0,0,.55);
+  font-size:clamp(2.6rem,5.6vw,4.6rem); line-height:1; letter-spacing:.01em;
+  color:var(--ink); text-shadow:0 4px 26px rgba(0,0,0,.4);
   opacity:0; animation:mrFadeUp 1s var(--ease) forwards .4s;
 }
 .mr-hero h1 em{ display:block; font-style:italic; font-weight:400; color:var(--gold-2); font-size:0.34em; letter-spacing:.32em; margin-top:16px; text-transform:uppercase; }
@@ -275,7 +268,7 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; color:var(--ivory); lett
   font-size:0.89rem; letter-spacing:.24em; text-transform:uppercase; color:var(--ink-3);
   opacity:0; animation:mrFadeUp 1s var(--ease) forwards .55s;
 }
-.mr-hero-loc svg{ width:17px; height:17px; stroke:var(--gold-2); }
+.mr-hero-loc svg{ width:17px; height:17px; stroke:var(--gold-2); flex-shrink:0; }
 .mr-hero-tags{
   margin-top:12px; font-size:0.92rem; letter-spacing:.06em; color:var(--gold-2);
   opacity:0; animation:mrFadeUp 1s var(--ease) forwards .7s;
@@ -283,8 +276,8 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; color:var(--ivory); lett
 @keyframes mrFadeUp{ from{ opacity:0; transform:translateY(24px); } to{ opacity:1; transform:translateY(0); } }
 
 .mr-hero-rule{
-  width:min(320px,58vw); height:1px; margin:34px 0;
-  background:linear-gradient(90deg,transparent,var(--gold-2),transparent);
+  width:min(220px,40vw); height:1px; margin:30px 0;
+  background:linear-gradient(90deg,var(--gold-2),transparent);
   opacity:0; animation:mrFadeUp 1s var(--ease) forwards .85s;
 }
 @media (prefers-reduced-motion:reduce){
@@ -298,16 +291,16 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; color:var(--ivory); lett
   text-transform:uppercase; color:var(--gold-2); font-weight:500;
 }
 .mr-hero .mr-countdown{
-  position:relative; flex-direction:column;
-  display:inline-flex; align-items:center; justify-content:center;
-  gap:0; padding:clamp(22px,3.6vw,36px) clamp(28px,5.4vw,60px);
-  border-radius:24px;
-  background:rgba(10,13,10,.42); border:1px solid rgba(210,180,95,.4);
+  position:relative; flex-direction:column; align-self:flex-start;
+  display:inline-flex; align-items:flex-start; justify-content:center;
+  gap:0; padding:clamp(18px,2.6vw,26px) clamp(22px,3.4vw,34px);
+  border-radius:20px;
+  background:rgba(10,13,10,.5); border:1px solid rgba(210,180,95,.4);
   backdrop-filter:blur(20px) saturate(140%); -webkit-backdrop-filter:blur(20px) saturate(140%);
   opacity:0; animation:mrFadeUp 1s var(--ease) forwards 1s;
-  box-shadow:0 24px 70px rgba(0,0,0,.4), 0 0 60px rgba(210,180,95,.1), inset 0 1px 0 rgba(255,255,255,.08);
+  box-shadow:0 20px 60px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.08);
 }
-.mr-cd-row{ display:flex; align-items:center; justify-content:center; gap:clamp(16px,2.8vw,36px); flex-wrap:wrap; }
+.mr-cd-row{ display:flex; align-items:center; justify-content:flex-start; gap:clamp(14px,2vw,26px); flex-wrap:wrap; }
 .mr-cd-unit{ display:flex; flex-direction:column; align-items:center; gap:8px; }
 .mr-cd-num{
   font-family:var(--serif); font-size:clamp(1.8rem,5vw,3.2rem); font-weight:500;
@@ -318,7 +311,7 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; color:var(--ivory); lett
 .mr-cd-div{ width:1px; align-self:stretch; background:linear-gradient(180deg,transparent,rgba(210,180,95,.4),transparent); }
 
 .mr-hero-actions{
-  margin-top:44px; display:flex; gap:18px; flex-wrap:wrap; justify-content:center;
+  margin-top:36px; display:flex; gap:16px; flex-wrap:wrap; justify-content:flex-start;
   opacity:0; animation:mrFadeUp 1s var(--ease) forwards 1.15s;
 }
 .mr-hero .mr-btn-outline{
@@ -575,23 +568,31 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; color:var(--ivory); lett
 
 /* ============ AMENITIES ============ */
 .mr-amenities-grid{
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:1px;
+  display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
   background:var(--line-soft); border:1px solid var(--line-soft); border-radius:20px; overflow:hidden;
 }
 .mr-amenity{
-  background:var(--ink-2); padding:36px 24px; display:flex; flex-direction:column; gap:14px;
+  background:var(--ink-2); padding:26px 22px; display:flex; flex-direction:row; align-items:center; gap:14px;
   transition:background .35s ease;
 }
 .mr-amenity:hover{ background:var(--ink-3); }
-.mr-amenity-ph{
-  width:100%; height:88px; border-radius:10px;
-  background:linear-gradient(135deg, rgba(184,146,61,.16), rgba(16,43,32,.08));
-  border:1px dashed var(--line);
-  display:flex; align-items:center; justify-content:center;
+.mr-amenity svg{ width:22px; height:22px; stroke:var(--forest); flex-shrink:0; }
+.mr-amenity span{ font-size:0.86rem; color:var(--muted); font-weight:500; line-height:1.3; }
+/* 13 amenities in a 4-col grid: 4/4/4/1 — center the final orphan card */
+.mr-amenities-grid > .mr-amenity:nth-child(13){ grid-column:2 / span 2; justify-content:center; text-align:center; }
+@media (max-width:1024px){
+  .mr-amenities-grid{ grid-template-columns:repeat(3,1fr); }
+  /* 13 in 3 cols: 3/3/3/3/1 — center the final orphan card */
+  .mr-amenities-grid > .mr-amenity:nth-child(13){ grid-column:2 / span 1; }
 }
-.mr-amenity-ph svg{ width:26px; height:26px; stroke:var(--muted-2); opacity:.65; }
-.mr-amenity svg{ width:24px; height:24px; stroke:var(--forest); }
-.mr-amenity span{ font-size:0.88rem; color:var(--muted); font-weight:500; }
+@media (max-width:640px){
+  .mr-amenities-grid{ grid-template-columns:repeat(2,1fr); }
+  .mr-amenity{ padding:20px 16px; gap:10px; }
+  .mr-amenity span{ font-size:0.82rem; }
+  .mr-amenity svg{ width:20px; height:20px; }
+  /* 13 in 2 cols: center the final orphan card across both columns */
+  .mr-amenities-grid > .mr-amenity:nth-child(13){ grid-column:1 / span 2; justify-content:center; }
+}
 
 /* ============ ESTIMATOR ============ */
 #estimator{ padding-top:min(9vw,90px); padding-bottom:min(9vw,90px); }
@@ -880,6 +881,11 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; color:var(--ivory); lett
   .mr-form-row{ grid-template-columns:1fr; }
   .mr-footer-top{ grid-template-columns:1fr; gap:32px; }
   .mr-hero{ padding:112px 5vw 48px; min-height:100svh; }
+  .mr-hero-content{ max-width:none; }
+  .mr-hero-photo{ background-position:64% 50%; }
+  .mr-hero-bg{
+    background:linear-gradient(180deg, rgba(5,8,6,.55) 0%, rgba(5,8,6,.3) 30%, rgba(5,8,6,.5) 68%, rgba(5,8,6,.86) 100%);
+  }
   .mr-hero-logo{ width:clamp(76px,20vw,104px); margin-bottom:12px; }
   .mr-hero-eyebrow{ font-size:0.66rem; letter-spacing:.26em; }
   .mr-hero-eyebrow::before, .mr-hero-eyebrow::after{ width:16px; }
@@ -1144,19 +1150,19 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; color:var(--ivory); lett
     </div>
   </div>
   <div class="mr-amenities-grid mr-reveal">
-    <div class="mr-amenity"><div class="mr-amenity-ph"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V4h6v3"/></svg><span>Luxury Rooms</span></div>
-    <div class="mr-amenity"><div class="mr-amenity-ph"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg><span>Banquet Hall</span></div>
-    <div class="mr-amenity"><div class="mr-amenity-ph"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg><span>Wedding Venue</span></div>
-    <div class="mr-amenity"><div class="mr-amenity-ph"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M4 21V11h16v10M6 11V6a2 2 0 012-2h8a2 2 0 012 2v5"/></svg><span>Restaurant</span></div>
-    <div class="mr-amenity"><div class="mr-amenity-ph"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M8 9h4a2 2 0 010 4H8V9zM8 13v3"/></svg><span>Free Parking</span></div>
-    <div class="mr-amenity"><div class="mr-amenity-ph"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg><span>Power Backup</span></div>
-    <div class="mr-amenity"><div class="mr-amenity-ph"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 2 4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6z"/></svg><span>24×7 Security</span></div>
-    <div class="mr-amenity"><div class="mr-amenity-ph"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M2 20c1-3 3-5 6-5s5 2 6 5M12 20c1-3 3-5 6-5"/></svg><span>Family Friendly</span></div>
-    <div class="mr-amenity"><div class="mr-amenity-ph"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/><circle cx="12" cy="12" r="4"/></svg><span>Air Conditioned Spaces</span></div>
-    <div class="mr-amenity"><div class="mr-amenity-ph"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span>Professional Hospitality</span></div>
-    <div class="mr-amenity"><div class="mr-amenity-ph"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21 8 13.5 2.5 9h7z"/></svg><span>Premium Experience</span></div>
-    <div class="mr-amenity"><div class="mr-amenity-ph"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><circle cx="8" cy="14" r="3"/><circle cx="16" cy="10" r="2"/><path d="M8 17v3M16 12v5M4 20h16"/></svg><span>Kids Play Area</span></div>
-    <div class="mr-amenity"><div class="mr-amenity-ph"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 2c2 3 1 4.5-.5 6C10 9.5 9 11 9 13a3 3 0 006 0c0-1-.5-2-1.5-3 1.5 1 2.5 2.5 2.5 4.5a5 5 0 01-10 0c0-3.5 2.5-6 4-8.5C10.5 4.5 11 3 12 2z"/></svg><span>Bonfire Zone</span></div>
+    <div class="mr-amenity"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V4h6v3"/></svg><span>Luxury Rooms</span></div>
+    <div class="mr-amenity"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg><span>Banquet Hall</span></div>
+    <div class="mr-amenity"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg><span>Wedding Venue</span></div>
+    <div class="mr-amenity"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M4 21V11h16v10M6 11V6a2 2 0 012-2h8a2 2 0 012 2v5"/></svg><span>Restaurant</span></div>
+    <div class="mr-amenity"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M8 9h4a2 2 0 010 4H8V9zM8 13v3"/></svg><span>Free Parking</span></div>
+    <div class="mr-amenity"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg><span>Power Backup</span></div>
+    <div class="mr-amenity"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 2 4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6z"/></svg><span>24×7 Security</span></div>
+    <div class="mr-amenity"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M2 20c1-3 3-5 6-5s5 2 6 5M12 20c1-3 3-5 6-5"/></svg><span>Family Friendly</span></div>
+    <div class="mr-amenity"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/><circle cx="12" cy="12" r="4"/></svg><span>Air Conditioned Spaces</span></div>
+    <div class="mr-amenity"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span>Professional Hospitality</span></div>
+    <div class="mr-amenity"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21 8 13.5 2.5 9h7z"/></svg><span>Premium Experience</span></div>
+    <div class="mr-amenity"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><circle cx="8" cy="14" r="3"/><circle cx="16" cy="10" r="2"/><path d="M8 17v3M16 12v5M4 20h16"/></svg><span>Kids Play Area</span></div>
+    <div class="mr-amenity"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 2c2 3 1 4.5-.5 6C10 9.5 9 11 9 13a3 3 0 006 0c0-1-.5-2-1.5-3 1.5 1 2.5 2.5 2.5 4.5a5 5 0 01-10 0c0-3.5 2.5-6 4-8.5C10.5 4.5 11 3 12 2z"/></svg><span>Bonfire Zone</span></div>
   </div>
 </section>
 
