@@ -602,88 +602,6 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; color:var(--ivory); lett
   .mr-amenities-grid > .mr-amenity:nth-child(13){ grid-column:1 / span 2; justify-content:center; }
 }
 
-/* ============ ESTIMATOR ============ */
-#estimator{ padding-top:min(9vw,90px); padding-bottom:min(9vw,90px); }
-.mr-est-grid{ display:grid; grid-template-columns:1.15fr 0.85fr; gap:32px; align-items:start; }
-.mr-est-calc{ padding:34px; }
-.mr-est-field{ margin-bottom:20px; }
-.mr-est-field label{ display:block; font-size:0.76rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
-.mr-est-field input, .mr-est-field select{
-  width:100%; padding:15px 16px; border-radius:12px; background:rgba(255,255,255,.6);
-  border:1px solid var(--line-soft); color:var(--forest); font-size:1.05rem; font-family:var(--serif);
-  transition:border-color .3s ease, box-shadow .3s ease;
-}
-.mr-est-field input:focus, .mr-est-field select:focus{ outline:none; border-color:var(--gold); box-shadow:0 0 0 3px rgba(184,146,61,.12); }
-.mr-est-field select{ cursor:pointer; }
-.mr-est-menu-label{ display:block; font-size:0.76rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:16px; }
-.mr-est-menu-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; }
-.mr-est-chip{
-  padding:12px 14px; border-radius:12px; background:rgba(255,255,255,.55);
-  border:1px solid var(--line-soft); transition:border-color .3s ease, transform .3s ease;
-}
-.mr-est-chip:hover{ border-color:var(--gold-dim,var(--line)); transform:translateY(-2px); }
-.mr-est-chip .name{ display:block; font-size:0.87rem; color:var(--ivory); font-weight:400; }
-.mr-est-chip .qty{ display:block; margin-top:4px; font-size:0.76rem; letter-spacing:.06em; color:var(--forest); }
-
-.mr-est-summary{
-  padding:34px; text-align:center; position:sticky; top:120px;
-  transition:box-shadow .4s ease;
-  display:none;
-}
-.mr-est-summary.is-visible{
-  display:block;
-  animation:mrEstReveal .7s cubic-bezier(.2,.8,.2,1) both;
-}
-@keyframes mrEstReveal{
-  0%{ opacity:0; transform:translateY(26px) scale(.98); }
-  60%{ opacity:1; }
-  100%{ opacity:1; transform:translateY(0) scale(1); }
-}
-.mr-est-total-num.mr-est-pulse{ animation:mrEstPulse 1.1s ease; }
-@keyframes mrEstPulse{
-  0%{ text-shadow:0 0 30px rgba(184,146,61,.35); }
-  40%{ text-shadow:0 0 55px rgba(184,146,61,.8); }
-  100%{ text-shadow:0 0 30px rgba(184,146,61,.35); }
-}
-.mr-est-summary:hover{ box-shadow:0 0 60px rgba(184,146,61,.08); }
-.mr-est-calc-hint{
-  margin-top:8px; font-size:0.82rem; color:#8C1F28; opacity:0;
-  transition:opacity .25s ease; text-align:center;
-}
-.mr-est-calc-hint.show{ opacity:1; }
-@keyframes mrShake{
-  0%,100%{ transform:translateX(0); }
-  25%{ transform:translateX(-6px); }
-  75%{ transform:translateX(6px); }
-}
-.mr-est-field.mr-shake input{ animation:mrShake .35s ease; border-color:#8C1F28; }
-.mr-est-row{
-  display:flex; justify-content:space-between; align-items:baseline;
-  padding:14px 0; border-bottom:1px solid var(--line-soft);
-  font-size:0.9rem; color:var(--muted);
-}
-.mr-est-row strong{ color:var(--ivory); font-family:var(--serif); font-size:1.1rem; font-weight:500; }
-.mr-est-total{ margin-top:22px; padding-top:8px; }
-.mr-est-total > span{ font-size:0.78rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); }
-.mr-est-total-num{
-  margin-top:10px; font-family:var(--serif); font-size:clamp(2rem,4.2vw,2.7rem); font-weight:600;
-  color:var(--forest); text-shadow:0 0 30px rgba(184,146,61,.35);
-}
-.mr-est-note{ margin-top:26px; font-family:var(--serif); font-style:italic; font-size:1.05rem; color:var(--ivory); }
-.mr-est-summary .mr-btn{ margin-top:14px; }
-.mr-est-disclaimer{ margin-top:14px; font-size:0.78rem; color:var(--muted-2); }
-
-.mr-est-sticky{
-  display:none; position:fixed; left:0; right:0; bottom:0; z-index:95;
-  align-items:center; justify-content:space-between; gap:16px;
-  padding:14px 20px; background:rgba(16,43,32,.95); border-top:1px solid var(--line-soft);
-  backdrop-filter:blur(14px);
-}
-.mr-est-sticky div{ display:flex; flex-direction:column; }
-.mr-est-sticky span{ font-size:0.7rem; letter-spacing:.12em; text-transform:uppercase; color:#B9AD8F; }
-.mr-est-sticky strong{ font-family:var(--serif); font-size:1.15rem; color:var(--gold-2); }
-.mr-est-sticky .mr-btn{ padding:12px 22px; font-size:0.76rem; }
-
 /* ============ GALLERY ============ */
 .mr-gallery-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:8px; }
 .mr-gph{
@@ -854,7 +772,7 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; color:var(--ivory); lett
 }
 
 /* ============ FABS ============ */
-.mr-fabs{ position:fixed; right:22px; bottom:26px; z-index:90; display:flex; flex-direction:column; gap:12px; transition:bottom .3s ease; }
+.mr-fabs{ position:fixed; right:22px; bottom:26px; z-index:90; display:flex; flex-direction:column; gap:12px; }
 .mr-fab{
   width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center;
   transition:transform .35s var(--ease), box-shadow .35s var(--ease);
@@ -868,7 +786,7 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; color:var(--ivory); lett
 .mr-fab-call{ border:1px solid var(--line); background:rgba(255,255,255,.75); backdrop-filter:blur(10px); }
 .mr-fab-call svg{ stroke:var(--forest); }
 
-/* ============ CONCIERGE POPUP ============ */
+/* ============ CALL NUMBER SELECTOR ============ */
 .mr-popup-overlay{
   position:fixed; inset:0; z-index:150;
   background:rgba(44,42,38,.6);
@@ -899,34 +817,9 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; color:var(--ivory); lett
   transition:border-color .3s ease, color .3s ease, transform .3s ease;
 }
 .mr-popup-close:hover{ border-color:var(--gold); color:var(--forest); transform:rotate(90deg); }
-.mr-popup-icon{
-  width:52px; height:52px; margin:0 auto 20px; border-radius:50%;
-  display:flex; align-items:center; justify-content:center;
-  border:1px solid var(--line);
-  background:radial-gradient(circle, rgba(184,146,61,.12), transparent 70%);
-}
-.mr-popup-icon svg{ width:24px; height:24px; stroke:var(--forest); }
 .mr-popup h3{ font-size:clamp(1.5rem,3.4vw,1.9rem); line-height:1.2; }
-.mr-popup p{ margin-top:14px; color:var(--muted); font-size:0.92rem; line-height:1.6; max-width:34ch; margin-left:auto; margin-right:auto; }
-.mr-popup-actions{ margin-top:30px; display:flex; flex-direction:column; gap:12px; }
-.mr-popup-actions .mr-btn{ width:100%; justify-content:center; }
-.mr-popup-actions .mr-btn-outline{ background:transparent; border-color:var(--line-soft); }
-
 .mr-call-list{ margin-top:26px; display:flex; flex-direction:column; gap:12px; }
 .mr-call-list .mr-btn{ width:100%; justify-content:center; }
-
-.mr-modal-scroll{ max-height:88vh; overflow-y:auto; }
-.mr-calc-lead-form{ text-align:left; margin-top:22px; }
-.mr-calc-lead-form .mr-field{ margin-bottom:16px; }
-.mr-calc-lead-form button[type="submit"]{ margin-top:6px; }
-
-/* subtle glow highlight when scrolled to from the popup CTA */
-#estimator.mr-est-highlight{ animation:mrEstGlow 2s ease; }
-@keyframes mrEstGlow{
-  0%{ box-shadow:inset 0 0 0 rgba(184,146,61,0); }
-  25%{ box-shadow:inset 0 0 80px rgba(184,146,61,.09); }
-  100%{ box-shadow:inset 0 0 0 rgba(184,146,61,0); }
-}
 
 @media (max-width:480px){
   .mr-popup{ padding:36px 26px 30px; }
@@ -941,8 +834,6 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; color:var(--ivory); lett
   .mr-about-visual{ order:-1; aspect-ratio:16/10; }
   .mr-footer-top{ grid-template-columns:1fr 1fr; }
   .mr-gallery-grid{ grid-template-columns:repeat(2,1fr); }
-  .mr-est-grid{ grid-template-columns:1fr; }
-  .mr-est-summary{ position:static; }
   .mr-sig-grid{ grid-template-columns:repeat(2,1fr); }
   .mr-hero{ padding:130px 5vw 80px; }
   .mr-hero-strip{ max-width:760px; gap:10px; }
@@ -987,11 +878,6 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; color:var(--ivory); lett
   .mr-hero-corner.tl{ top:14px; left:14px; }
   .mr-hero-corner.br{ bottom:14px; right:14px; }
   .mr-scroll-cue{ bottom:14px; }
-  .mr-est-calc, .mr-est-summary{ padding:22px; }
-  .mr-est-sticky.is-visible{ display:flex; }
-  /* keep the floating buttons clear of the mobile sticky estimator bar while it's shown */
-  body.mr-est-sticky-active .mr-fabs{ bottom:92px; }
-  #estimator{ padding-bottom:110px; }
   .mr-launch{ padding:96px 5vw; }
   .mr-launch-card-inner{ padding:44px 24px; }
   .mr-launch-num{ font-size:4.2rem; }
@@ -1062,16 +948,6 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; color:var(--ivory); lett
   .mr-sig-custom-grid{ gap:8px; margin-top:14px; }
   .mr-center-cta .mr-sig-disclaimer{ margin-top:14px; font-size:0.72rem; }
 
-  /* Estimator / calculator */
-  #estimator{ padding-bottom:96px; }
-  .mr-est-grid{ gap:16px; }
-  .mr-est-calc, .mr-est-summary{ padding:18px; border-radius:16px; }
-  .mr-est-field{ margin-bottom:14px; }
-  .mr-est-menu-grid{ gap:8px; }
-  .mr-est-chip{ padding:10px 12px; }
-  .mr-est-total{ margin-top:14px; }
-  .mr-est-note{ margin-top:16px; }
-
   /* Gallery */
   .mr-gallery-grid{ gap:10px; margin-top:4px; }
 
@@ -1105,15 +981,10 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; color:var(--ivory); lett
   .mr-footer-socials{ margin-top:12px; }
   .mr-footer-col ul{ margin-top:8px; gap:6px; }
 
-  /* Popups / modals kept compact and easy to complete one-handed */
+  /* Call number selector */
   .mr-popup{ padding:26px 20px 22px; border-radius:18px; }
   .mr-popup h3{ font-size:1.3rem; }
-  .mr-popup p{ margin-top:8px; font-size:0.84rem; }
-  .mr-popup-actions{ margin-top:18px; gap:8px; }
   .mr-call-list{ margin-top:16px; gap:8px; }
-  .mr-modal-scroll{ max-height:92vh; }
-  .mr-calc-lead-form{ margin-top:14px; }
-  .mr-calc-lead-form .mr-field{ margin-bottom:10px; }
 }
 </style>
 <noscript><style>.mr-reveal{opacity:1!important;transform:none!important;}</style></noscript>
@@ -1131,7 +1002,6 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; color:var(--ivory); lett
       <a href="#stay">Stay</a>
       <a href="#weddings">Weddings</a>
       <a href="#amenities">Amenities</a>
-      <a href="#estimator">Estimate Cost</a>
       <a href="#gallery">Gallery</a>
       <a href="#location">Location</a>
     </div>
@@ -1148,7 +1018,6 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; color:var(--ivory); lett
   <a href="#stay">Stay</a>
   <a href="#weddings">Weddings</a>
   <a href="#amenities">Amenities</a>
-  <a href="#estimator">Estimate Cost</a>
   <a href="#gallery">Gallery</a>
   <a href="#location">Location</a>
   <a href="#contact" class="mr-btn mr-btn-solid">Enquire Now</a>
@@ -1251,7 +1120,7 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; color:var(--ivory); lett
 
     <div class="mr-launch-actions mr-reveal d3">
       <a href="#contact" class="mr-btn mr-btn-solid mr-launch-claim">Claim Your Privilege</a>
-      <a href="#estimator" class="mr-btn mr-btn-glass">Estimate Your Event</a>
+      <a href="#contact" class="mr-btn mr-btn-glass">Check Availability</a>
     </div>
 
     <p class="mr-launch-notice mr-reveal d4">Only the first 11 confirmed celebrations are eligible for this exclusive privilege. <strong>Terms &amp; Conditions Apply.</strong></p>
@@ -1410,62 +1279,6 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; color:var(--ivory); lett
   <div class="mr-center-cta mr-reveal">
     <a href="#contact" class="mr-btn mr-btn-solid">Speak With Our Celebration Consultant</a>
     <p class="mr-sig-disclaimer">*Starting package price is &#8377;3,75,000. Final pricing may vary depending on guest count, event requirements, selected services, d&eacute;cor preferences, catering options, entertainment, accommodation, and additional customizations. Terms &amp; Conditions Apply.</p>
-  </div>
-</section>
-
-<!-- ============ BANQUET COST ESTIMATOR ============ -->
-<section class="mr-section" id="estimator">
-  <div class="mr-head mr-reveal">
-    <span class="mr-eyebrow">Plan Your Budget</span>
-    <h2>Estimate Your Celebration</h2>
-    <p class="mr-lede">Enter your guest count and menu package, then tap Calculate to get an instant estimate.</p>
-  </div>
-
-  <div class="mr-est-grid">
-    <div class="mr-est-calc mr-glass mr-reveal">
-      <div class="mr-est-field">
-        <label for="estGuests">Number of Guests</label>
-        <input type="number" id="estGuests" min="100" max="5000" step="1" placeholder="Enter Number of Guests">
-        <p class="mr-est-calc-hint" id="estGuestsHint">Please enter your expected guest count.</p>
-      </div>
-
-      <div class="mr-est-field">
-        <label for="estPlate">Menu Price Per Plate</label>
-        <select id="estPlate"></select>
-      </div>
-
-      <div class="mr-est-menu">
-        <span class="mr-est-menu-label">What's Included in the Menu</span>
-        <div class="mr-est-menu-grid" id="estMenuGrid"></div>
-      </div>
-
-      <button type="button" class="mr-btn mr-btn-solid" id="estCalcBtn" style="width:100%; justify-content:center; margin-top:8px;">Calculate Estimate</button>
-    </div>
-
-    <div class="mr-est-summary mr-glass mr-reveal d1" id="estSummaryCard">
-      <span class="mr-eyebrow" style="justify-content:center;">Your Estimate</span>
-      <div class="mr-est-row">
-        <span>Guests</span>
-        <strong id="sumGuests">&mdash;</strong>
-      </div>
-      <div class="mr-est-row">
-        <span>Plate Price</span>
-        <strong id="sumPlate">&mdash;</strong>
-      </div>
-      <div class="mr-est-total">
-        <span>Estimated Cost</span>
-        <div class="mr-est-total-num" id="sumTotal">&mdash;</div>
-      </div>
-      <p class="mr-est-note">Want the Best Deal?</p>
-      <button type="button" class="mr-btn mr-btn-solid" id="estQuoteBtn" style="width:100%; justify-content:center;">Request Custom Quote</button>
-      <p class="mr-est-disclaimer" id="estError" style="display:none; color:#8C1F28;">We couldn't save your enquiry. Please try again.</p>
-      <p class="mr-est-disclaimer">Final pricing may vary based on customization, season and add-ons.</p>
-    </div>
-  </div>
-
-  <div class="mr-est-sticky" id="estStickyBar">
-    <div><span>Estimated Total</span><strong id="stickyTotal">&mdash;</strong></div>
-    <button type="button" class="mr-btn mr-btn-solid" id="estStickyBtn">Get Quote</button>
   </div>
 </section>
 
@@ -1680,7 +1493,7 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; color:var(--ivory); lett
     </div>
     <div class="mr-footer-col">
       <h5>Explore</h5>
-      <ul class="mr-footer-links-grid"><li><a href="#estimator">Estimate Cost</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#location">Location</a></li><li><a href="#contact">Book Now</a></li></ul>
+      <ul class="mr-footer-links-grid"><li><a href="#gallery">Gallery</a></li><li><a href="#location">Location</a></li><li><a href="#contact">Book Now</a></li></ul>
     </div>
     <div class="mr-footer-col">
       <h5>Contact</h5>
@@ -1714,22 +1527,6 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; color:var(--ivory); lett
   </a>
 </div>
 
-<!-- ============ CONCIERGE ESTIMATOR POPUP ============ -->
-<div class="mr-popup-overlay" id="mrPopupOverlay" aria-hidden="true">
-  <div class="mr-popup mr-glass" role="dialog" aria-modal="true" aria-labelledby="mrPopupTitle" id="mrPopup">
-    <button type="button" class="mr-popup-close" id="mrPopupClose" aria-label="Close">&times;</button>
-    <div class="mr-popup-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21 8 13.5 2.5 9h7z"/></svg>
-    </div>
-    <h3 id="mrPopupTitle">Planning a Celebration?</h3>
-    <p>Estimate your wedding, reception, corporate event, or party cost instantly. No registration required.</p>
-    <div class="mr-popup-actions">
-      <button type="button" class="mr-btn mr-btn-solid" id="mrPopupPrimary">Estimate My Event</button>
-      <button type="button" class="mr-btn mr-btn-outline" id="mrPopupSecondary">Maybe Later</button>
-    </div>
-  </div>
-</div>
-
 <!-- ============ CALL NUMBER SELECTOR ============ -->
 <div class="mr-popup-overlay" id="mrCallOverlay" aria-hidden="true">
   <div class="mr-popup mr-glass" role="dialog" aria-modal="true" aria-labelledby="mrCallTitle" id="mrCallModal" style="max-width:360px;">
@@ -1740,74 +1537,6 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; color:var(--ivory); lett
       <a href="tel:+919839255798" class="mr-btn mr-btn-outline">+91 98392 55798</a>
       <a href="tel:+917985758510" class="mr-btn mr-btn-outline">+91 79857 58510</a>
     </div>
-  </div>
-</div>
-
-<!-- ============ CALCULATOR LEAD MODAL ============ -->
-<div class="mr-popup-overlay" id="mrCalcLeadOverlay" aria-hidden="true">
-  <div class="mr-popup mr-glass mr-modal-scroll" role="dialog" aria-modal="true" aria-labelledby="mrCalcLeadTitle" id="mrCalcLeadModal">
-    <button type="button" class="mr-popup-close" id="mrCalcLeadClose" aria-label="Close">&times;</button>
-    <h3 id="mrCalcLeadTitle">Complete Your Enquiry</h3>
-    <p>Share your details so our team can follow up with your custom quote.</p>
-    <form id="mrCalcLeadForm" novalidate class="mr-calc-lead-form">
-      <div class="mr-field" id="clFullName">
-        <label for="clFullNameInput">Full Name</label>
-        <input type="text" id="clFullNameInput" placeholder="Your full name">
-        <span class="err">Please enter your name.</span>
-      </div>
-      <div class="mr-field" id="clPhone">
-        <label for="clPhoneInput">Phone Number</label>
-        <input type="tel" id="clPhoneInput" placeholder="10-digit mobile number">
-        <span class="err">Please enter a valid phone number.</span>
-      </div>
-      <div class="mr-field" id="clEmail">
-        <label for="clEmailInput">Email (Optional)</label>
-        <input type="email" id="clEmailInput" placeholder="you@example.com">
-        <span class="err">Please enter a valid email.</span>
-      </div>
-      <div class="mr-field" id="clEventType">
-        <label for="clEventTypeInput">Event Type</label>
-        <select id="clEventTypeInput">
-          <option value="">Select an option</option>
-          <option>Luxury Stay</option>
-          <option>Wedding</option>
-          <option>Reception</option>
-          <option>Corporate Event</option>
-          <option>Birthday Celebration</option>
-          <option>Anniversary</option>
-          <option>Engagement</option>
-          <option>Pool Party</option>
-          <option>Private Party</option>
-          <option>Family Function</option>
-          <option>Other</option>
-        </select>
-        <span class="err">Please select an event type.</span>
-      </div>
-      <div class="mr-field" id="clDate">
-        <label for="clDateInput">Preferred Date</label>
-        <input type="date" id="clDateInput">
-        <span class="err">Please select a preferred date.</span>
-      </div>
-      <div class="mr-field" id="clGuests">
-        <label for="clGuestsInput">Number of Guests</label>
-        <input type="number" id="clGuestsInput" min="1">
-        <span class="err">Please enter the number of guests.</span>
-      </div>
-      <div class="mr-field" id="clPlate">
-        <label for="clPlateInput">Menu Price Per Plate</label>
-        <input type="text" id="clPlateInput" readonly>
-      </div>
-      <div class="mr-field">
-        <label for="clEstimateInput">Estimated Amount</label>
-        <input type="text" id="clEstimateInput" readonly>
-      </div>
-      <div class="mr-field">
-        <label for="clMessageInput">Message (Optional)</label>
-        <textarea id="clMessageInput" placeholder="Anything else we should know?"></textarea>
-      </div>
-      <button type="submit" class="mr-btn mr-btn-solid mr-form-submit" id="mrCalcLeadSubmit">Submit &amp; Get Quote on WhatsApp</button>
-      <p class="mr-est-disclaimer" id="clError" style="display:none; color:#8C1F28; margin-top:12px;">We couldn't save your enquiry. Please try again, or contact us directly on WhatsApp.</p>
-    </form>
   </div>
 </div>
 
@@ -1908,11 +1637,9 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; color:var(--ivory); lett
 })();
 
 /* ============ GOOGLE SHEETS ENQUIRY BACKEND ============
-   Single shared helper used by BOTH the main enquiry form and
-   the cost estimator's "Request Custom Quote" buttons. Sends a
-   normalized payload to the Apps Script Web App, which appends
-   it to Google Sheets. Nothing here touches UI/CSS — callers
-   decide what to show based on { ok, data, error }.
+   The booking enquiry form sends a normalized payload to the
+   Apps Script Web App, which appends it to Google Sheets.
+   The form handles the returned result.
    ========================================================== */
 const MR_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby63sSixdG5ssmorsHbxySblm5OqA7yNppp1JuUICRF-bdJfOFoY5L9QIMn8BaKN-E/exec';
 
@@ -1926,9 +1653,9 @@ function mrSanitize(value){
 }
 
 /**
- * Builds the normalized enquiry payload shape expected by the
- * Apps Script backend. Any field not supplied by a given caller
- * (e.g. the estimator doesn't collect an email) is sent as ''.
+ * Builds the enquiry payload expected by the Apps Script backend.
+ * The booking form supplies empty strings for the legacy package
+ * and estimatedCost columns.
  */
 function mrBuildPayload(fields){
   return {
@@ -1980,18 +1707,6 @@ async function mrSubmitEnquiry(fields){
     console.error('[Manoram] Failed to save enquiry to Google Sheets:', err);
     return { ok:false, error: err };
   }
-}
-
-/* ============ CONCIERGE POPUP — SHARED SESSION FLAGS ============
-   These are called from the estimator and enquiry-form handlers
-   below so the popup timer (further down) knows not to interrupt
-   a visitor who's already engaged or already enquired.
-   ========================================================== */
-function markEstimatorOpened(){
-  sessionStorage.setItem('estimatorOpened', 'true');
-}
-function markEnquirySubmitted(){
-  sessionStorage.setItem('enquirySubmitted', 'true');
 }
 
 /* ============ SCROLL PROGRESS ============ */
@@ -2085,302 +1800,6 @@ function markEnquirySubmitted(){
    the very top of this script block (hardened with a fallback) —
    see the comment there for why it needed to move. */
 
-/* ============ BANQUET COST ESTIMATOR ============ */
-(function(){
-  const guestsEl = document.getElementById('estGuests');
-  const plateEl = document.getElementById('estPlate');
-  const menuGrid = document.getElementById('estMenuGrid');
-  const sumGuests = document.getElementById('sumGuests');
-  const sumPlate = document.getElementById('sumPlate');
-  const sumTotal = document.getElementById('sumTotal');
-  const stickyTotal = document.getElementById('stickyTotal');
-  const quoteBtn = document.getElementById('estQuoteBtn');
-  const stickyBtn = document.getElementById('estStickyBtn');
-  const calcBtn = document.getElementById('estCalcBtn');
-  const summaryCard = document.getElementById('estSummaryCard');
-  const guestsHint = document.getElementById('estGuestsHint');
-  const stickyBar = document.getElementById('estStickyBar');
-  if(!guestsEl) return;
-
-  let hasRevealed = false;
-
-  /* ==========================================================
-     SINGLE SOURCE OF TRUTH FOR ALL MENU PACKAGES.
-     Add, remove or edit a package here — the dropdown, the menu
-     cards, the calculation and the WhatsApp message all update
-     automatically. Nothing else in this file needs to change.
-
-     PLACEHOLDER DATA — replace with your actual package sheet.
-     Each key is the price per plate. "categories" only lists
-     what that package actually includes — omit anything not
-     offered at that price point (e.g. no Chicken/Fish/Mutton
-     on a pure-veg package).
-     ========================================================== */
-  const MENU_PACKAGES = {
-    699: {
-      label: '\u20B9699 / Plate',
-      categories: [
-        { name:'Rice', qty:1 },
-        { name:'Roti', qty:2 },
-        { name:'Dal', qty:1 },
-        { name:'Sabzi', qty:2 },
-        { name:'Chutney', qty:1 },
-        { name:'Sweet Dish', qty:1 },
-        { name:'Salad', qty:null },
-        { name:'Papad', qty:null },
-        { name:'Welcome Drink', qty:null }
-      ]
-    },
-    799: {
-      label: '\u20B9799 / Plate',
-      categories: [
-        { name:'Rice', qty:2 },
-        { name:'Roti', qty:2 },
-        { name:'Dal', qty:1 },
-        { name:'Sabzi', qty:3 },
-        { name:'Chutney', qty:1 },
-        { name:'Sweet Dish', qty:2 },
-        { name:'Snacks (Veg)', qty:2 },
-        { name:'Salad', qty:null },
-        { name:'Papad', qty:null },
-        { name:'Welcome Drink', qty:null }
-      ]
-    },
-    849: {
-      label: '\u20B9849 / Plate',
-      categories: [
-        { name:'Rice', qty:2 },
-        { name:'Roti', qty:3 },
-        { name:'Dal', qty:1 },
-        { name:'Sabzi', qty:3 },
-        { name:'Dahi Item', qty:1 },
-        { name:'Chutney', qty:2 },
-        { name:'Sweet Dish', qty:2 },
-        { name:'Snacks (Veg)', qty:3 },
-        { name:'Chat', qty:1 },
-        { name:'Salad', qty:null },
-        { name:'Papad', qty:null },
-        { name:'Welcome Drink', qty:null }
-      ]
-    },
-    949: {
-      label: '\u20B9949 / Plate',
-      categories: [
-        { name:'Rice', qty:2 },
-        { name:'Roti', qty:3 },
-        { name:'Puri / Kachori', qty:1 },
-        { name:'Dal', qty:1 },
-        { name:'Sabzi', qty:3 },
-        { name:'Dahi Item', qty:1 },
-        { name:'Chutney', qty:2 },
-        { name:'Chicken', qty:1 },
-        { name:'Sweet Dish', qty:2 },
-        { name:'Snacks (Veg)', qty:4 },
-        { name:'Chat', qty:2 },
-        { name:'Chinese', qty:1 },
-        { name:'Salad', qty:null },
-        { name:'Papad', qty:null },
-        { name:'Welcome Drink', qty:null }
-      ]
-    },
-    999: {
-      label: '\u20B9999 / Plate',
-      categories: [
-        { name:'Rice', qty:2 },
-        { name:'Roti', qty:3 },
-        { name:'Puri / Kachori', qty:2 },
-        { name:'Dal', qty:1 },
-        { name:'Sabzi', qty:4 },
-        { name:'Dahi Item', qty:1 },
-        { name:'Chutney', qty:2 },
-        { name:'Chicken', qty:2 },
-        { name:'Sweet Dish', qty:3 },
-        { name:'Snacks (Veg)', qty:5 },
-        { name:'Chat', qty:2 },
-        { name:'Chinese', qty:3 },
-        { name:'South Indian', qty:1 },
-        { name:'Salad', qty:null },
-        { name:'Papad', qty:null },
-        { name:'Welcome Drink', qty:null }
-      ]
-    },
-    1199: {
-      label: '\u20B91199 / Plate',
-      categories: [
-        { name:'Rice', qty:3 },
-        { name:'Roti', qty:3 },
-        { name:'Puri / Kachori', qty:2 },
-        { name:'Dal', qty:2 },
-        { name:'Sabzi', qty:4 },
-        { name:'Dahi Item', qty:1 },
-        { name:'Chutney', qty:2 },
-        { name:'Chicken', qty:2 },
-        { name:'Mutton', qty:1 },
-        { name:'Fish', qty:1 },
-        { name:'Sweet Dish', qty:4 },
-        { name:'Snacks (Veg)', qty:5 },
-        { name:'Chat', qty:2 },
-        { name:'Chinese', qty:3 },
-        { name:'South Indian', qty:2 },
-        { name:'Salad', qty:null },
-        { name:'Papad', qty:null },
-        { name:'Welcome Drink', qty:null }
-      ]
-    }
-  };
-
-  function inr(n){
-    return '\u20B9' + Math.round(n).toLocaleString('en-IN');
-  }
-
-  /* Build the dropdown once, straight from MENU_PACKAGES keys —
-     never duplicated anywhere else in the markup. */
-  function buildDropdown(){
-    const prices = Object.keys(MENU_PACKAGES).map(Number).sort((a,b) => a-b);
-    plateEl.innerHTML = prices.map(p =>
-      `<option value="${p}">${MENU_PACKAGES[p].label}</option>`
-    ).join('');
-    // default to a mid-range package if present, else the first one
-    const defaultPrice = prices.includes(999) ? 999 : prices[0];
-    plateEl.value = String(defaultPrice);
-  }
-
-  /* Re-render the "What's Included" cards for the currently
-     selected package only — packages never leak into each other. */
-  function renderMenu(price){
-    const pkg = MENU_PACKAGES[price];
-    if(!pkg){ menuGrid.innerHTML = ''; return; }
-    menuGrid.innerHTML = pkg.categories.map(c => `
-      <div class="mr-est-chip">
-        <span class="name">${c.name}</span>
-        <span class="qty">${c.qty ? 'Any ' + c.qty : 'Included'}</span>
-      </div>
-    `).join('');
-  }
-
-  let currentTotal = 0;
-
-  function animateNumber(el, from, to, duration){
-    const start = performance.now();
-    function step(now){
-      const p = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - p, 3);
-      const val = from + (to - from) * eased;
-      el.textContent = inr(val);
-      if(p < 1) requestAnimationFrame(step);
-      else el.textContent = inr(to);
-    }
-    requestAnimationFrame(step);
-  }
-
-  function getSelectedPackage(){
-    const price = Number(plateEl.value);
-    return { price, pkg: MENU_PACKAGES[price] };
-  }
-
-  function calculate(){
-    let guests = parseInt(guestsEl.value, 10);
-    if(isNaN(guests)) guests = 0;
-    guests = Math.max(0, Math.min(5000, guests));
-
-    const { price } = getSelectedPackage();
-    const total = guests * price;
-
-    sumGuests.textContent = guests.toLocaleString('en-IN');
-    sumPlate.textContent = inr(price);
-
-    animateNumber(sumTotal, currentTotal, total, 500);
-    stickyTotal.textContent = inr(total);
-    currentTotal = total;
-
-    return { guests, price, total };
-  }
-
-  function onPackageChange(){
-    const { price } = getSelectedPackage();
-    renderMenu(price);
-    calculate();
-  }
-
-  function revealSummary(){
-    if(!summaryCard) return;
-    summaryCard.classList.add('is-visible');
-    if(stickyBar) stickyBar.classList.add('is-visible');
-    hasRevealed = true;
-    requestAnimationFrame(function(){
-      summaryCard.scrollIntoView({ behavior:'smooth', block:'nearest' });
-    });
-    sumTotal.classList.remove('mr-est-pulse');
-    void sumTotal.offsetWidth; /* restart the pulse animation */
-    sumTotal.classList.add('mr-est-pulse');
-  }
-
-  function handleCalculateClick(){
-    const rawGuests = parseInt(guestsEl.value, 10);
-    if(!rawGuests || rawGuests <= 0){
-      const field = guestsEl.closest('.mr-est-field');
-      if(field) field.classList.add('mr-shake');
-      if(guestsHint) guestsHint.classList.add('show');
-      guestsEl.focus();
-      setTimeout(function(){ if(field) field.classList.remove('mr-shake'); }, 400);
-      return;
-    }
-    if(guestsHint) guestsHint.classList.remove('show');
-    calculate();
-    revealSummary();
-  }
-
-  guestsEl.addEventListener('input', function(){
-    if(guestsHint) guestsHint.classList.remove('show');
-    if(hasRevealed) calculate();
-  });
-  guestsEl.addEventListener('keydown', function(e){
-    if(e.key === 'Enter'){ e.preventDefault(); handleCalculateClick(); }
-  });
-  plateEl.addEventListener('change', function(){
-    onPackageChange();
-  });
-  if(calcBtn) calcBtn.addEventListener('click', handleCalculateClick);
-  guestsEl.addEventListener('focus', markEstimatorOpened, { once:true });
-  plateEl.addEventListener('focus', markEstimatorOpened, { once:true });
-
-  /* The mobile sticky total bar was being switched on once (after the
-     first calculation) and never switched off again, so it stayed
-     pinned over the WhatsApp/Instagram/Call buttons for the rest of
-     the visit — through the gallery, location and footer. Only keep
-     it visible while the estimator section itself is actually on
-     screen, and nudge the floating buttons up out of its way while
-     it's showing. */
-  const estimatorSection = document.getElementById('estimator');
-  if(stickyBar && estimatorSection){
-    const stickyVisibilityObserver = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        const show = hasRevealed && entry.isIntersecting;
-        stickyBar.classList.toggle('is-visible', show);
-        document.body.classList.toggle('mr-est-sticky-active', show);
-      });
-    }, { threshold:0, rootMargin:'0px 0px -35% 0px' });
-    stickyVisibilityObserver.observe(estimatorSection);
-  }
-
-  /* "Request Custom Quote" / "Get Quote" no longer submit anonymously.
-     They open the lead modal (name + phone + event details required)
-     with the calculated guests/plate/estimate pre-filled; the modal's
-     own form is what actually calls mrSubmitEnquiry(). */
-  function requestQuote(){
-    const { guests, price, total } = calculate();
-    if(typeof window.mrOpenCalcLeadModal === 'function'){
-      window.mrOpenCalcLeadModal({ guests, price, total });
-    }
-  }
-  quoteBtn.addEventListener('click', requestQuote);
-  stickyBtn.addEventListener('click', requestQuote);
-
-  /* init */
-  buildDropdown();
-  onPackageChange();
-})();
-
 /* ============ ENQUIRY FORM ============ */
 (function(){
   const form = document.getElementById('mrForm');
@@ -2455,8 +1874,6 @@ function markEnquirySubmitted(){
       return;
     }
 
-    markEnquirySubmitted();
-
     /* STEP 4 — success: show existing success message, then open WhatsApp
        exactly as before, then reset the form. */
     const lines = [
@@ -2492,242 +1909,6 @@ function markEnquirySubmitted(){
   closeBtn.addEventListener('click', close);
   overlay.addEventListener('click', function(e){ if(e.target === overlay) close(); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && overlay.classList.contains('show')) close(); });
-})();
-
-/* ============ CALCULATOR LEAD MODAL ============
-   Fixes the estimator so a quote request can never be sent to
-   Google Sheets without a Name + Phone (and the other required
-   details). "Request Custom Quote" / "Get Quote" now open this
-   modal, pre-filled with the calculated guests/plate/estimate,
-   before anything is submitted or WhatsApp is opened. */
-(function(){
-  const overlay = document.getElementById('mrCalcLeadOverlay');
-  if(!overlay) return;
-  const form = document.getElementById('mrCalcLeadForm');
-  const closeBtn = document.getElementById('mrCalcLeadClose');
-  const errEl = document.getElementById('clError');
-  const submitBtn = document.getElementById('mrCalcLeadSubmit');
-
-  let pendingCalc = null; // { guests, price, total } captured when the modal opens
-
-  function setInvalid(id, invalid){
-    const field = document.getElementById(id);
-    if(field) field.classList.toggle('invalid', invalid);
-  }
-
-  function open(calc){
-    pendingCalc = calc;
-    document.getElementById('clGuestsInput').value = calc.guests || '';
-    document.getElementById('clPlateInput').value = 'Rs ' + Math.round(calc.price).toLocaleString('en-IN');
-    document.getElementById('clEstimateInput').value = 'Rs ' + Math.round(calc.total).toLocaleString('en-IN');
-    errEl.style.display = 'none';
-    overlay.classList.add('show');
-    overlay.setAttribute('aria-hidden','false');
-  }
-  function close(){
-    overlay.classList.remove('show');
-    overlay.setAttribute('aria-hidden','true');
-  }
-  closeBtn.addEventListener('click', close);
-  overlay.addEventListener('click', function(e){ if(e.target === overlay) close(); });
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && overlay.classList.contains('show')) close(); });
-
-  let submitting = false;
-
-  form.addEventListener('submit', async function(e){
-    e.preventDefault();
-    if(submitting || !pendingCalc) return;
-
-    const fullName = document.getElementById('clFullNameInput').value.trim();
-    const phone = document.getElementById('clPhoneInput').value.trim();
-    const email = document.getElementById('clEmailInput').value.trim();
-    const eventType = document.getElementById('clEventTypeInput').value;
-    const prefDate = document.getElementById('clDateInput').value;
-    const guests = document.getElementById('clGuestsInput').value.trim();
-    const message = document.getElementById('clMessageInput').value.trim();
-
-    let valid = true;
-    setInvalid('clFullName', !fullName); if(!fullName) valid = false;
-    const phoneOk = /^[0-9+\-\s]{7,15}$/.test(phone);
-    setInvalid('clPhone', !phoneOk); if(!phoneOk) valid = false;
-    const emailOk = email === '' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    setInvalid('clEmail', !emailOk); if(!emailOk) valid = false;
-    setInvalid('clEventType', !eventType); if(!eventType) valid = false;
-    setInvalid('clDate', !prefDate); if(!prefDate) valid = false;
-    setInvalid('clGuests', !guests || Number(guests) <= 0); if(!guests || Number(guests) <= 0) valid = false;
-
-    if(!valid) return;
-
-    submitting = true;
-    const originalLabel = submitBtn.textContent;
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending…';
-
-    const result = await mrSubmitEnquiry({
-      name: fullName,
-      phone: phone,
-      email: email,
-      eventType: eventType,
-      eventDate: prefDate,
-      guests: guests,
-      package: document.getElementById('clPlateInput').value,
-      estimatedCost: document.getElementById('clEstimateInput').value,
-      message: message
-    });
-
-    submitBtn.disabled = false;
-    submitBtn.textContent = originalLabel;
-    submitting = false;
-
-    if(!result.ok){
-      errEl.style.display = 'block';
-      return; // keep the modal open with the entered data, do NOT open WhatsApp
-    }
-
-    markEnquirySubmitted();
-
-    const lines = [
-      'Hello Manoram Resorts,',
-      'I would like a quotation.',
-      'Name: ' + fullName,
-      'Phone: ' + phone,
-      email ? ('Email: ' + email) : null,
-      'Event Type: ' + eventType,
-      'Preferred Date: ' + prefDate,
-      'Guests: ' + guests,
-      'Package: ' + document.getElementById('clPlateInput').value,
-      'Estimated Budget: ' + document.getElementById('clEstimateInput').value,
-      message ? ('Message: ' + message) : null,
-      'Please share the complete details.'
-    ].filter(Boolean).join('\n');
-
-    window.open('https://wa.me/917985758510?text=' + encodeURIComponent(lines), '_blank');
-    form.reset();
-    close();
-  });
-
-  window.mrOpenCalcLeadModal = open;
-})();
-
-/* ============ CONCIERGE ESTIMATOR POPUP ============
-   Shows once per browser session, 30s after the visitor lands,
-   unless they've already opened the estimator, submitted an
-   enquiry, or already seen the popup this session. Does not
-   duplicate or alter the estimator itself — it only scrolls to
-   the existing section and briefly highlights it.
-   ========================================================== */
-(function(){
-  const overlay = document.getElementById('mrPopupOverlay');
-  const popup = document.getElementById('mrPopup');
-  const closeBtn = document.getElementById('mrPopupClose');
-  const primaryBtn = document.getElementById('mrPopupPrimary');
-  const secondaryBtn = document.getElementById('mrPopupSecondary');
-  const estimatorSection = document.getElementById('estimator');
-  if(!overlay || !popup) return;
-
-  let lastFocused = null;
-
-  function getFocusable(){
-    return Array.from(popup.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'))
-      .filter(el => !el.disabled && el.offsetParent !== null);
-  }
-
-  function openPopup(){
-    lastFocused = document.activeElement;
-    overlay.classList.add('show');
-    overlay.setAttribute('aria-hidden', 'false');
-    // move focus into the dialog
-    primaryBtn.focus();
-    document.addEventListener('keydown', onKeydown);
-  }
-
-  function closePopup(){
-    overlay.classList.remove('show');
-    overlay.setAttribute('aria-hidden', 'true');
-    document.removeEventListener('keydown', onKeydown);
-    // restore focus to whatever the visitor was doing before
-    if(lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
-  }
-
-  function dismissPopup(){
-    // "Maybe Later" / close (×) / outside click — same behaviour,
-    // and never shown again this session.
-    sessionStorage.setItem('estimatorPopupShown', 'true');
-    closePopup();
-  }
-
-  function onKeydown(e){
-    if(e.key === 'Escape'){
-      dismissPopup();
-      return;
-    }
-    if(e.key === 'Tab'){
-      // simple focus trap within the dialog
-      const focusable = getFocusable();
-      if(!focusable.length) return;
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      if(e.shiftKey && document.activeElement === first){
-        e.preventDefault(); last.focus();
-      } else if(!e.shiftKey && document.activeElement === last){
-        e.preventDefault(); first.focus();
-      }
-    }
-  }
-
-  overlay.addEventListener('click', function(e){
-    if(e.target === overlay) dismissPopup(); // click outside the card
-  });
-  closeBtn.addEventListener('click', dismissPopup);
-  secondaryBtn.addEventListener('click', dismissPopup);
-
-  primaryBtn.addEventListener('click', function(){
-    sessionStorage.setItem('estimatorPopupShown', 'true');
-    closePopup();
-
-    if(!estimatorSection) return;
-
-    estimatorSection.scrollIntoView({ behavior:'smooth', block:'start' });
-
-    // focus the first input once the scroll has roughly settled,
-    // then give the section a brief, non-flashing glow
-    setTimeout(function(){
-      const firstField = document.getElementById('estGuests');
-      if(firstField) firstField.focus();
-      estimatorSection.classList.add('mr-est-highlight');
-      setTimeout(function(){
-        estimatorSection.classList.remove('mr-est-highlight');
-      }, 2000);
-    }, 650);
-  });
-
-  /* Trigger: 12 seconds of browsing, only once per session, and
-     only if the visitor hasn't already engaged with the estimator
-     or submitted an enquiry by then. */
-  function maybeShowPopup(){
-    const alreadyShown = sessionStorage.getItem('estimatorPopupShown') === 'true';
-    const alreadyOpened = sessionStorage.getItem('estimatorOpened') === 'true';
-    const alreadySubmitted = sessionStorage.getItem('enquirySubmitted') === 'true';
-
-    if(alreadyShown || alreadyOpened || alreadySubmitted) return;
-
-    sessionStorage.setItem('estimatorPopupShown', 'true');
-    openPopup();
-  }
-
-  let popupTimer = setTimeout(maybeShowPopup, 12000);
-
-  /* Safari (and several mobile browsers) restore this page from the
-     back/forward cache on a back-button return instead of reloading
-     it. Left alone, a pending popup timer can fire the instant the
-     visitor comes back, or the overlay can be left in whatever state
-     it was cached in. Reset cleanly on every bfcache restore. */
-  window.addEventListener('pageshow', function(e){
-    if(!e.persisted) return;
-    clearTimeout(popupTimer);
-    closePopup();
-    popupTimer = setTimeout(maybeShowPopup, 12000);
-  });
 })();
 
 /* ============ LAUNCH OFFER — PARTICLES + MOUSE GLOW ============ */
